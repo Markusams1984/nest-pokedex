@@ -2,7 +2,7 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
 
-# Pokedesk Backend
+# Pokedex Backend
 
 A robust backend service built with **NestJS**, designed to manage Pokémon data. This project demonstrates modular architecture, dependency injection, and containerized database management.
 
