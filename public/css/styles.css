@@ -1,0 +1,43 @@
+
+/* html, body {
+    padding: 20px;
+    background-color: grey;
+}
+
+h1 {
+    font-size:20px;
+    color: white;
+} */
+
+/* Reset básico para asegurar consistencia */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f7f6;
+    padding: 20px;
+}
+
+/* Estilo para tus encabezados de proyecto */
+h1 {
+    color: #1C5C91; /* Un azul profesional que verás mucho en NestJS */
+    margin-bottom: 20px;
+    border-bottom: 2px solid #57BEDE;
+    display: inline-block;
+}
+
+/* Preparado para cuando renderices tus datos desde NestJS */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
