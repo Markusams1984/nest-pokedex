@@ -36,6 +36,10 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
     ```bash
     npm run start:dev
     ```
+5. **Rebuild the database with the seed:**
+    ```text
+    http://localhost:3000/api/v2/seed
+    ```
 
 ## 🛠 Tech Stack
 
