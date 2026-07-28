@@ -36,7 +36,16 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
     ```bash
     npm run start:dev
     ```
-5. **Rebuild the database with the seed:**
+
+5. **Clone the `.env.template` file and rename the copy to `.env`**
+
+6. **Fill in the environment variables defined in the `.env` file**
+
+7. **Run the application in dev:**
+   ```bash
+   yarn start:dev
+
+8. **Rebuild the database with the seed:**
     ```text
     http://localhost:3000/api/v2/seed
     ```
