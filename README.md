@@ -19,7 +19,7 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
 1.  **Clone the repository:**
     ```bash
     git clone <your-repository-url>
-    cd 03-pokedesk
+    03-pokedex
     ```
 
 2.  **Install dependencies:**
