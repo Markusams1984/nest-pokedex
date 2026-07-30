@@ -6,6 +6,9 @@
 
 A robust backend service built with **NestJS**, designed to manage Pokémon data. This project demonstrates modular architecture, dependency injection, and containerized database management.
 
+🚀 **Live URL:** [https://nest-pokedex-f39d.onrender.com](https://nest-pokedex-f39d.onrender.com)
+
+## 🚀 Getting Started
 ## 🚀 Getting Started
 
 ### Prerequisites
