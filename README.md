@@ -9,7 +9,6 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
 🚀 **Live URL:** [https://nest-pokedex-f39d.onrender.com](https://nest-pokedex-f39d.onrender.com)
 
 ## 🚀 Getting Started
-## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -22,7 +21,7 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
 1.  **Clone the repository:**
     ```bash
     git clone <your-repository-url>
-    03-pokedex
+    cd 03-pokedex
     ```
 
 2.  **Install dependencies:**
@@ -30,28 +29,80 @@ A robust backend service built with **NestJS**, designed to manage Pokémon data
     yarn install
     ```
 
-3.  **Launch the database container:**
+3.  **Clone the `.env.template` file and rename the copy to `.env`:**
     ```bash
-    docker-compose up -d
+    cp .env.template .env
     ```
 
-4.  **Run the application (Development Mode):**
+4.  **Fill in the environment variables defined in `.env`.**
+    See `.env.template` for the full list of required keys.
+
+5.  **Launch the database container:**
     ```bash
-    npm run start:dev
+    docker compose up -d
     ```
 
-5. **Clone the `.env.template` file and rename the copy to `.env`**
+6.  **Run the application in development mode:**
+    ```bash
+    yarn start:dev
+    ```
 
-6. **Fill in the environment variables defined in the `.env` file**
-
-7. **Run the application in dev:**
-   ```bash
-   yarn start:dev
-
-8. **Rebuild the database with the seed:**
+7.  **Rebuild the database with the seed:**
     ```text
     http://localhost:3000/api/v2/seed
     ```
+
+## 🏗 Production Build
+
+1.  **Create the `.env.prod` file:**
+    ```bash
+    cp .env.template .env.prod
+    ```
+
+2.  **Fill in the production environment variables in `.env.prod`.**
+    Inside a container, `MONGODB` must point to the database **service name** defined in
+    `docker-compose.prod.yaml`, not to `localhost`.
+
+3.  **Build the image and start the containers:**
+    ```bash
+    docker compose -f docker-compose.prod.yaml --env-file .env.prod up -d --build
+    ```
+
+4.  **Seed the database:**
+    ```text
+    http://localhost:3000/api/v2/seed
+    ```
+
+### Notes
+
+*   `--env-file .env.prod` is **required**. Compose interpolates `${MONGODB}`, `${PORT}` and
+    `${DEFAULT_LIMIT}`; without the flag it falls back to `.env`, which points to `localhost` and
+    fails inside the container.
+*   The image has no bind mount for source code, so **any change under `src/` requires a rebuild**.
+    Re-run the same `up -d --build` command.
+*   To stop the stack:
+    ```bash
+    docker compose -f docker-compose.prod.yaml --env-file .env.prod down
+    ```
+    Never use `down -v` — it would wipe the MongoDB data.
+
+## ☁️ Deployment
+
+This project is deployed on [Render](https://render.com) with auto-deploy enabled: every push to
+`main` on `origin` triggers a new build.
+
+### Force a redeploy without code changes
+
+Useful after changing environment variables in the Render dashboard, or when a build failed for a
+transient reason:
+
+```bash
+git commit --allow-empty -m "Trigger redeploy"
+git push origin main
+```
+
+The `--allow-empty` flag creates a commit with no file changes, which is enough for Render to pick
+up a new deploy.
 
 ## 🛠 Tech Stack
 
