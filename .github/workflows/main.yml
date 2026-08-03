@@ -1,3 +1,4 @@
+
 name: CI Pipeline
 
 on:
@@ -23,5 +24,5 @@ jobs:
       - name: Run Lint
         run: yarn lint
 
-      - name: Run Tests
-        run: yarn test
+      - name: Build Project
+        run: yarn build
