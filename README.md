@@ -4,6 +4,8 @@
 
 # Pokedex Backend
 
+[![CI Pipeline](https://github.com/Markusams1984/nest-pokedex/actions/workflows/main.yml/badge.svg)](https://github.com/Markusams1984/nest-pokedex/actions/workflows/main.yml)
+
 A robust backend service built with **NestJS**, designed to manage Pokémon data. This project demonstrates modular architecture, dependency injection, and containerized database management.
 
 🚀 **Live URL:** [https://nest-pokedex-f39d.onrender.com](https://nest-pokedex-f39d.onrender.com)
