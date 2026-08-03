@@ -8,35 +8,31 @@ import { AxiosAdapter } from '../common/adapters/axios.adapter';
 
 @Injectable()
 export class SeedService {
-  
-
   constructor(
     // 1. Inyección del Modelo de Mongoose
-    @InjectModel( Pokemon.name )
+    @InjectModel(Pokemon.name)
     private readonly pokemonModel: Model<Pokemon>,
 
     private readonly http: AxiosAdapter,
   ) {}
 
   async executeSeed() {
-
     await this.pokemonModel.deleteMany({});
 
     const data = await this.http.get<PokeResponse>(
       'https://pokeapi.co/api/v2/pokemon?limit=650',
     );
 
-    const  pokemonToInsert: { name: string, no: number }[] = [];
+    const pokemonToInsert: { name: string; no: number }[] = [];
 
     data.results.forEach(({ name, url }) => {
       const segments = url.split('/');
       const no = +segments[segments.length - 2];
 
-    pokemonToInsert.push({name, no});
-    
+      pokemonToInsert.push({ name, no });
     });
 
-    await this.pokemonModel.insertMany( pokemonToInsert )
+    await this.pokemonModel.insertMany(pokemonToInsert);
 
     return 'Seed Executed';
   }
